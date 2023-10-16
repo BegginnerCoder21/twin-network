@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,7 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        $user = User::all();
+
+        return view('admin.dashboard',compact('user'));
     }
 
     /**
@@ -19,15 +23,15 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('auth.register');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        //
+        
     }
 
     /**
