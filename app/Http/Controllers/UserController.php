@@ -13,9 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-
-        return view('admin.dashboard',compact('user'));
+        
     }
 
     /**
@@ -23,7 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        
     }
 
     /**

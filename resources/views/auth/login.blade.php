@@ -37,7 +37,7 @@
                     {{ __("S'inscrire") }}
                 </a>
 
-            <x-primary-button class="ml-3">
+            <x-primary-button class="ml-3 bg-blue-500 hover:bg-blue-700">
                 {{ __('Connexion') }}
             </x-primary-button>
         </div>
