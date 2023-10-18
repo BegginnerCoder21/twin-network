@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
+
                 
 Route::get('/dashboard', function () {
     return view('dashboard');
