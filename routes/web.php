@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
@@ -20,9 +21,10 @@ Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
                 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/acceuil',[ArticleController::class,'index'])->name('acceuil');
+
 
 Route::resource('user', UserController::class);
 

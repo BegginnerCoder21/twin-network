@@ -13,7 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        
+        $users = User::all();
+
+        return view('dashboard',compact('users'));
     }
 
     /**
@@ -45,6 +47,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        
         return view('admin.edit');
     }
 
