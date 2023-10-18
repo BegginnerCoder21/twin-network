@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,9 +13,11 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $users = User::all();
 
         return view('dashboard',compact('users'));
+
     }
 
     /**
@@ -29,7 +31,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserStoreRequest $request)
+    public function store(Request $request)
     {
         
     }
@@ -39,7 +41,9 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('admin.show',compact('user'));
     }
 
     /**
@@ -47,8 +51,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        
-        return view('admin.edit');
+
+        $user = User::findOrFail($id);
+
+        return view('admin.edit',compact('user'));
     }
 
     /**
@@ -56,7 +62,25 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $imageRequest = '';
+
+        if(!$request->image){
+            $imageRequest = $user->images;
+        }else{
+            $imageRequest = $request->image->store('images');
+        }
+
+        $user->update([
+            'matricule' => $request->matricule,
+            'name' => $request->name,
+            'email' => $request->email,
+            'lastname' => $request->email,
+            'speciality' => $request->speciality,
+            'admin' => $request->admin,
+            'images' => $request->$imageRequest,
+        ]);
     }
 
     /**
@@ -64,6 +88,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->delete();
     }
 }
