@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Http\Requests\UserRequest;
+use Rules\Password;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
@@ -31,9 +34,28 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         
+        $image = $request->image->store('Userimages');
+
+
+        $user = User::create([
+            'name' => $request->name,
+            'lastname' => $request->lastname,
+            'email' => $request->email,
+            'matricule' => $request->matricule,
+            'speciality' => $request->speciality,
+            'images' => $image,
+            'admin' => $request->admin,
+            'password' => Hash::make($request->password),
+        ]);
+
+        
+
+        event(new Registered($user));
+
+        return redirect('/dashboard');
     }
 
     /**
@@ -41,9 +63,11 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::findOrFail($id);
+        // $user = User::findOrFail($id);
 
-        return view('admin.show',compact('user'));
+        // return view('admin.show',compact('user'));
+
+        dd('view édité');
     }
 
     /**
@@ -60,8 +84,18 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'max:100'],
+            'lastname' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'matricule' => ['required', 'string', 'max:15'],
+            'speciality' => ['required', 'string', 'max:100'],
+            'admin' => ['required'],
+            'password' => ['required', 'confirmed'],
+        ]);
+        
         $user = User::findOrFail($id);
 
         $imageRequest = '';
@@ -79,8 +113,12 @@ class UserController extends Controller
             'lastname' => $request->email,
             'speciality' => $request->speciality,
             'admin' => $request->admin,
-            'images' => $request->$imageRequest,
+            'images' => $imageRequest,
+            'password' => Hash::make($request->password),
         ]);
+        $users = User::all();
+
+        return view('dashboard',compact('users'));
     }
 
     /**
@@ -91,5 +129,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->delete();
+
+        return redirect('/dashboard');
     }
 }

@@ -1,6 +1,9 @@
+
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+
+    <form method="POST" action="{{ route('user.update',$user->id) }}" enctype="multipart/form-data">
         @csrf
+        @method('put')
 
         @foreach ($errors->all() as $error)
                 <div class="text-red-500 mt-2xx">
@@ -10,42 +13,42 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" class="text-blue-600" :value="__('Nom')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ $user->name }}" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- lastname-->
         <div class="mt-4">
             <x-input-label for="lastname" class="text-blue-600" :value="__('Prenom')" />
-            <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname"  required />
+            <x-text-input id="lastname" class="block mt-1 w-full" value="{{ $user->lastname }}" type="text" name="lastname"  required />
             <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" class="text-blue-600" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ $user->email }}" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- matricule-->
         <div class="mt-4">
             <x-input-label for="matricule" class="text-blue-600" :value="__('Matricule')" />
-            <x-text-input id="matricule" class="block mt-1 w-full" type="text" name="matricule" required />
+            <x-text-input id="matricule" class="block mt-1 w-full" value="{{ $user->matricule }}" type="text" name="matricule" required />
             <x-input-error :messages="$errors->get('matricule')" class="mt-2" />
         </div>
 
         <!-- spcéciality -->
         <div class="mt-4">
             <x-input-label for="speciality" :value="__('Spécialité')" />
-            <x-text-input id="speciality" class="block mt-1 w-full" type="text" name="speciality" required />
+            <x-text-input id="speciality" class="block mt-1 w-full" value="{{ $user->speciality }}" type="text" name="speciality" required />
             <x-input-error :messages="$errors->get('speciality')" class="mt-2" />
         </div>
 
         <!-- images -->
         <div class="mt-4">
             <x-input-label for="image" class="text-blue-600" :value="__('Images')" />
-            <x-text-input id="image" class="block mt-1 w-full" type="file" name="image"/>
+            <x-text-input id="image" class="block mt-1 w-full"  type="file" name="image"/>
             <x-input-error :messages="$errors->get('image')" class="mt-2" />
         </div>
 
@@ -53,8 +56,8 @@
         <div class="mt-4">
             <x-input-label for="admin" class="text-blue-600" :value="__('Admin')" />
             <select name="admin" id="admin">
-                <option value="0">0</option>
-                <option value="1">1</option>
+                <option  value="0">0</option>
+                <option  value="1">1</option>
             </select>
             <x-input-error :messages="$errors->get('admin')" class="mt-2" />
         </div>

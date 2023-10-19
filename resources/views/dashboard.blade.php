@@ -28,7 +28,14 @@
                     </div>
                     <div class="space-x-3">
                         <a class="bg-blue-500 text-white border-2 hover:bg-white hover:border-blue-500 hover:text-blue-400 rounded-md px-4 py-2" href="{{ route('user.edit',$user->id) }}">Modifier</a>
-                        <button class="bg-white text-blue-400 border-blue-500 border-2 hover:bg-blue-500 hover:border-blue-500 hover:text-white rounded-md px-4 py-1">Supprimer</button>
+                        <button class="bg-white text-blue-500 border-2 border-blue-500 hover:bg-blue-500 hover:border-blue-500 hover:text-white rounded-md px-4 py-1" onclick="event.preventDefault(); document.getElementById('deleteUser{{ $user->id }}').submit();" >
+                        <form action="{{ route('user.destroy',$user->id) }}" method="post" id="deleteUser{{ $user->id }}">
+                        @csrf
+                            @method('delete')
+                                Supprimer
+                            </form>
+                        </button>
+                       
                     </div>
                 </div>
             </div>   
