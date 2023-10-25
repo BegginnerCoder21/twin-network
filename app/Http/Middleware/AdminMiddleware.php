@@ -15,7 +15,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->user()){
+        if(!auth()  ){
             
             abort(403);
         }

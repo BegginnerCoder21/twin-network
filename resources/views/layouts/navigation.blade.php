@@ -28,13 +28,13 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('LIste IT') }}
+                    <x-nav-link :href="route('user.list')" :active="request()->routeIs('user.list')">
+                        {{ __('Liste IT') }}
                     </x-nav-link>
-                </div>
+                </div> 
                 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('user.list')" :active="request()->routeIs('user.list')">
                         {{ __('Contact') }}
                     </x-nav-link>
                 </div>

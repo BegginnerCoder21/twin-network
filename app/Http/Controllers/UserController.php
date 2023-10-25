@@ -14,6 +14,11 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function list(){
+        
+        return view('etudiantlist');
+    }
     public function index()
     {
     //     INSERT INTO `users` (`id`, `matricule`, `name`, `lastname`, `email`, `speciality`, `images`, `email_verified_at`, `password`, `admin`, `remember_token`, `created_at`, `updated_at`) VALUES

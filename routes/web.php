@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ListEtudiantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::middleware(['admin'])->group(function () {
 
     Route::resource('user', UserController::class);
+    Route::get('list',ListEtudiantController::class)->name('user.list');
     
 });
 
