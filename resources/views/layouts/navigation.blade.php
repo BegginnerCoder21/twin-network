@@ -5,14 +5,14 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('acceuil') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 @auth
-                    @if (Auth::user()->admin)      
+                    @if (auth()->user()->admin)      
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
@@ -31,7 +31,7 @@
                     <x-nav-link :href="route('user.list')" :active="request()->routeIs('user.list')">
                         {{ __('Liste IT') }}
                     </x-nav-link>
-                </div> 
+                </div>
                 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('user.list')" :active="request()->routeIs('user.list')">

@@ -18,9 +18,9 @@ use App\Http\Controllers\ListEtudiantController;
 |
 */
 
-Route::middleware(['admin'])->group(function () {
+Route::middleware('auth')->group(function () {
 
-    Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class)->middleware('admin');
     Route::get('list',ListEtudiantController::class)->name('user.list');
     
 });

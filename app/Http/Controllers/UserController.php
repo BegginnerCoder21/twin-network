@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Rules\Password;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -51,8 +52,8 @@ class UserController extends Controller
     {
         
         $image = $request->image->store('Userimages');
-
-
+        
+        
         $user = User::create([
             'name' => $request->name,
             'lastname' => $request->lastname,
@@ -65,21 +66,21 @@ class UserController extends Controller
         ]);
 
         
-
+        
         event(new Registered($user));
 
         return redirect('/dashboard');
     }
-
+    
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
         // $user = User::findOrFail($id);
-
+        
         // return view('admin.show',compact('user'));
-
+        
         dd('view édité');
     }
 
@@ -97,29 +98,34 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
+    public function update(UserUpdateRequest $request, string $id)
     {
         $user = User::findOrFail($id);
-
+        
         $imageRequest = '';
-
+        
         if(!$request->image){
             $imageRequest = $user->images;
         }else{
             $imageRequest = $request->image->store('images');
         }
 
-        $user->update([
+        $HashPassword = [
             'matricule' => $request->matricule,
             'name' => $request->name,
             'email' => $request->email,
             'lastname' => $request->email,
             'speciality' => $request->speciality,
             'admin' => $request->admin,
-            'images' => $imageRequest,
-            'password' => Hash::make($request->password),
-        ]);
+            'images' => $imageRequest
+        ];
+
+        if($request->password){
+            $HashPassword = array_merge($HashPassword,['password' => $request->password]);
+        }
+
         $users = User::all();
+        $user->update($HashPassword);
 
         return view('dashboard',compact('users'));
     }
