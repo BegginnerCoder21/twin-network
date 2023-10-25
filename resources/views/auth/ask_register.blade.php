@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="" enctype="multipart/form-data">
         @csrf
 
         @foreach ($errors->all() as $error)
@@ -9,15 +9,10 @@
             @endforeach
         <!-- Name -->
         <div>
+            <x-input-label for="name" class="text-blue-600" :value="__('Nom')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
-        <div class="mt-4">
-            <x-input-label for="matricule" :value="__('Matricule')" />
-            <x-text-input id="matricule" class="block mt-1 w-full" type="text" name="matricule" :value="old('matricule')" required autocomplete="matricule" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
 
         <!-- lastname-->
         <div class="mt-4">
@@ -75,7 +70,6 @@
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
-        
 
         <!-- Confirm Password -->
         <div class="mt-4">
