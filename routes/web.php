@@ -27,7 +27,9 @@ Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
                 
+
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'verified','admin'])->name('dashboard');
+
 
 
 
