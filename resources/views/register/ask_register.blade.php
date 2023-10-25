@@ -10,7 +10,7 @@
 
 
 <x-mail::button :url="''">
-Button Text
+Button
 </x-mail::button>
 
 Thanks,<br>
