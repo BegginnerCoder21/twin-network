@@ -17,18 +17,23 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
+Route::middleware(['admin'])->group(function () {
+
+    Route::resource('user', UserController::class);
+    
+});
+
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
                 
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/acceuil',[ArticleController::class,'index'])->name('acceuil');
 
 
-Route::resource('user', UserController::class);
 
 Route::middleware('auth')->group(function () {
+    Route::get('/acceuil',[ArticleController::class,'index'])->name('acceuil');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
