@@ -20,7 +20,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $donnee=new User();
+        dd($donnee);
     }
 
     /**

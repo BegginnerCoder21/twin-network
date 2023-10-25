@@ -58,8 +58,8 @@
         <div class="mt-4">
             <x-input-label for="admin" class="text-blue-600" :value="__('Admin')" />
             <select name="admin" id="admin">
-                <option value="0">0</option>
-                <option value="1">1</option>
+                <option value="0">NON</option>
+                <option value="1">OUI</option>
             </select>
             <x-input-error :messages="$errors->get('admin')" class="mt-2" />
         </div>

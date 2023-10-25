@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ListEtudiantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +18,26 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
+Route::middleware('auth')->group(function () {
+
+    Route::resource('user', UserController::class)->middleware('admin');
+    Route::get('list',ListEtudiantController::class)->name('user.list');
+    
+});
+
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
                 
-Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/acceuil',[ArticleController::class,'index'])->name('acceuil');
+Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'verified','admin'])->name('dashboard');
 
 
-Route::resource('user', UserController::class);
+
+
 
 Route::middleware('auth')->group(function () {
+    Route::get('/acceuil',[ArticleController::class,'index'])->name('acceuil');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

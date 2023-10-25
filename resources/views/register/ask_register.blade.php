@@ -10,7 +10,7 @@
 
 
 <x-mail::button :url="''">
-Button
+<a href="{{route('register',['donnee',$donnee])}}">Button</a>
 </x-mail::button>
 
 Thanks,<br>
