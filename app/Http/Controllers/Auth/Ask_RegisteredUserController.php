@@ -32,7 +32,7 @@ class Ask_RegisteredUserController extends Controller
     public function store(Request $request)
     {
        
-        Mail::send(new ask_register($request->all()));
+        $mail=Mail::send(new ask_register($request->all()));
         return to_route('login');
     }
 }

@@ -1,17 +1,15 @@
 <x-mail::message>
 
-# DEMANDE D'INSCRIPTION SUR TWIN NETWORK
+    # DEMANDE D'INSCRIPTION SUR TWIN NETWORK
 
-- NOM : {{$donnee['name']}}
+            - NOM        : {{ ucfirst($donnee['name']) }} 
+            
+            - PRENOM     : {{ ucfirst($donnee['lastname']) }} 
 
-- PRENOM : {{$donnee['lastname']}}
+            - MATRICULE  : {{ ucfirst($donnee['matricule']) }} 
 
-- MATRICULE : {{$donnee['matricule']}}
-
-
-<x-mail::button :url="''">
-<a href="{{route('register',['donnee',$donnee])}}">Button</a>
-</x-mail::button>
+            - SPECIALITE : {{ ucfirst($donnee['speciality']) }} 
 
 Thanks,<br>
+twin network
 </x-mail::message>

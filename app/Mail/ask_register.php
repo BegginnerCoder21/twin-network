@@ -4,6 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -16,10 +17,8 @@ class ask_register extends Mailable
     /**
      * Create a new message instance.
      */
-    private array $donnees;
     public function __construct(public array $donnee)
     {
-        $this->donnees=$donnee;
     }
 
     /**
@@ -28,7 +27,7 @@ class ask_register extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: $this->donnees['email'],
+            from: $this->donnee['email'],
             to: 'lcinak4682@gmil.com',
             subject: 'Ask Register'
         );
@@ -51,6 +50,10 @@ class ask_register extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath($this->donnee['image'])
+            ->as($this->donnee['image'].'.jpeg')
+            ->withMime('img/jpg')
+    ];
     }
 }
