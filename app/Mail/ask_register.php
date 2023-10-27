@@ -28,8 +28,8 @@ class ask_register extends Mailable
     {
         return new Envelope(
             from: $this->donnee['email'],
-            to: 'lcinak4682@gmil.com',
-            subject: 'Ask Register'
+            to: 'aboubacarteguera@gmail.com',
+            subject: 'DEMANDE D\'INSCRIPTION'
         );
     }
 
@@ -52,8 +52,8 @@ class ask_register extends Mailable
     {
         return [
             Attachment::fromPath($this->donnee['image'])
-            ->as($this->donnee['image'].'.jpeg')
-            ->withMime('img/jpg')
-    ];
+                ->as($this->donnee['image'] . '.jpeg')
+                ->withMime('img/jpg')
+        ];
     }
 }

@@ -9,15 +9,10 @@
             @endforeach
         <!-- Name -->
         <div>
+            <x-input-label for="lastname" class="text-blue-600" :value="__('Nom')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
-        <div class="mt-4">
-            <x-input-label for="matricule" :value="__('Matricule')" />
-            <x-text-input id="matricule" class="block mt-1 w-full" type="text" name="matricule" :value="old('matricule')" required autocomplete="matricule" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
 
         <!-- lastname-->
         <div class="mt-4">
@@ -89,9 +84,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md" href="{{ route('login') }}">
-                {{ __('Déja un compte? Se connecter') }}
-            </a>
+          
 
             <x-primary-button class="ml-4 bg-blue-400 hover:bg-blue-500">
                 {{ __('Enregistrer') }}

@@ -32,12 +32,7 @@
                         {{ __('Liste IT') }}
                     </x-nav-link>
                 </div>
-                
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('user.list')" :active="request()->routeIs('user.list')">
-                        {{ __('Contact') }}
-                    </x-nav-link>
-                </div>
+  
             </div>
 
             <!-- Settings Dropdown -->

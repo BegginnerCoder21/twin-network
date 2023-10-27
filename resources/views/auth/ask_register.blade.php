@@ -54,7 +54,7 @@
             </a>
 
             <x-primary-button class="ml-4 bg-blue-400 hover:bg-blue-500">
-                {{ __('Enregistrer') }}
+                {{ __('Envoyer') }}
             </x-primary-button>
         </div>
     </form>
