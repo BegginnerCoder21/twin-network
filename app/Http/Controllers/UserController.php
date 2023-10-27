@@ -51,7 +51,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         
-        $image = $request->image->store('Userimages');
+        $image = $request->image->store('Userimages','public');
         
         
         $user = User::create([

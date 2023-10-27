@@ -17,8 +17,10 @@
             @foreach ($users as $user)
             <div class="twinner">
                 <div class="twinner-left">
-                    <div class="twinner-left-image">
-                        <img src="" alt="pp">
+                    <div class="twinner-left-image ">
+                        
+                        <img class="object-contain" src="{{ asset('storage/' . $user->images)}}" alt="photo">
+
                     </div>
                     <div class="twinner-left-info">
                         <h2>{{ $user->name }}</h2>
