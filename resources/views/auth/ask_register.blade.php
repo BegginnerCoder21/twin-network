@@ -1,6 +1,8 @@
 <x-guest-layout>
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form method="POST" action="" enctype="multipart/form-data" class="px-10">
         @csrf
+
+        <h1 class="text-3xl text-blue-500 text-center mb-12">Demande d'inscription</h1>
 
         @foreach ($errors->all() as $error)
                 <div class="text-red-500 mt-2xx">

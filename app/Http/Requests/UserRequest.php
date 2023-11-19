@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
             'lastname' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'matricule' => ['required', 'string', 'max:15'],
+            'number' => ['required','string','min:10','max:10'],
             'speciality' => ['required', 'string', 'max:100'],
             'image' => ['required'],
             'admin' => ['required'],

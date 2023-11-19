@@ -7,10 +7,18 @@ use Illuminate\Http\Request;
 
 class ListEtudiantController extends Controller
 {
-    public function __invoke()
+
+    public function index()
+    {
+        return view('etudiantlist');
+    }
+    public function twinnerslist()
     {
 
         $users = User::all();
-        return view('etudiantlist',compact('users'));
+
+        return response()->json([
+            'twinners' => $users
+        ]);
     }
 }

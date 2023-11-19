@@ -7,6 +7,8 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/js/**/*.vue',
+
     ],
 
     theme: {
@@ -17,8 +19,13 @@ export default {
 
             container : {
                 center  : true,
-                padding : '5rem'
-            }
+                padding : '5rem',
+                screens : {
+                    lg : "1140px",
+                    xl : "1124px",
+                    '2xl': "1124px"
+                }
+            },
         },
     },
 

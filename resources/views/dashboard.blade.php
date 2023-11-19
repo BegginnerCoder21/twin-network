@@ -10,7 +10,7 @@
             <a class="bg-blue-500  px-8 py-2 text-white rounded-md hover:bg-white hover:text-blue-400 border-2 border-blue-500" href="{{ route('user.create') }}">
                 Ajouter
             </a>
-        
+
         </div>
         @foreach ($users as $user)
             <div class=" border-b-2 border-blue-500 px-5 mt-4 space-y-8">
@@ -35,10 +35,10 @@
                                 Supprimer
                             </form>
                         </button>
-                       
+
                     </div>
                 </div>
-            </div>   
+            </div>
         @endforeach
     </div>
 </x-app-layout>

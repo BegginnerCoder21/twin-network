@@ -4,4 +4,6 @@
             {{ __('Liste IT') }}
         </h2>
     </x-slot>
+
+    <twinners-list ></twinners-list>
 </x-app-layout>

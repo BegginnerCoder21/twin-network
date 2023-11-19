@@ -19,16 +19,18 @@ use App\Http\Controllers\ListEtudiantController;
 */
 
 Route::middleware('auth')->group(function () {
+    Route::put('user/{user}',[\App\Http\Controllers\User\UserUpdatedController::class,'update'])->middleware('admin')->name('user.update');
+    Route::post('user',[\App\Http\Controllers\User\UserStroreController::class,'store'])->middleware('admin')->name('user.store');
+    Route::resource('user', UserController::class)->middleware('admin')->except(['store','update']);
+    Route::get('/listit',[ListEtudiantController::class,'index'])->name('user.list');
+     Route::get('/twinners',[ListEtudiantController::class,'twinnerslist'])->name('twinners.list');
 
-    Route::resource('user', UserController::class)->middleware('admin');
-    Route::get('list',ListEtudiantController::class)->name('user.list');
-    
 });
 
 Route::get('/', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
-                
+
 
 Route::get('/dashboard',[UserController::class,'index'])->middleware(['auth', 'verified','admin'])->name('dashboard');
 

@@ -1,10 +1,12 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
 
+
+
+    <form method="POST" action="{{ route('login') }}" class="px-10">
+        @csrf
+        <h1 class="text-blue-500 text-2xl text-center mb-7">Bienvenue, cher TWINNER</h1>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
