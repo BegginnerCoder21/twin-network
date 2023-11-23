@@ -4,4 +4,8 @@
             {{ __('Accueil') }}
         </h2>
     </x-slot>
+
+    <p></p>
+
+    <topicality-content></topicality-content>
 </x-app-layout>

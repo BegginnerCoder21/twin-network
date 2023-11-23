@@ -2,16 +2,16 @@
 
 import {onMounted, ref} from "vue";
 import axios from "axios";
+import useStudents from "@/composables/students/useStudents";
 
-const twinnerslist  = ref([]);
+const {
+    getUser,
+    getImageUrl,
+    twinnerslist
+} = useStudents();
 onMounted(async () => {
-    let response = await axios.get('/twinners').catch(err => console.log(err));
-    twinnerslist.value = response.data.twinners;
+    await getUser();
 });
-
-const getImageUrl = (urlImage : string) => {
-    return 'storage/' + urlImage;
-}
 
 </script>
 
