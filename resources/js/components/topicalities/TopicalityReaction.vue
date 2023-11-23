@@ -33,7 +33,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import typeReaction from '../../types/typeReaction';
 import useReaction from "@/composables/students/useReation";
 
 const {
@@ -41,14 +40,6 @@ const {
     isLike
 } = useReaction();
 
-
-const infoReaction : typeReaction[]  = [
-   {
-    icone : '',
-    description : '',
-    isClick : false
-   }
-]
 
 </script>
 
