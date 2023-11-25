@@ -8,6 +8,7 @@ const {
     getUser,
     getImageUrl,
     twinnerslist
+
 } = useStudents();
 
 onMounted(async () => {

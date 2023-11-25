@@ -12,7 +12,7 @@
             </a>
 
         </div>
-        @foreach ($users as $user)
+        @forelse($users as $user)
             <div class=" border-b-2 border-blue-500 px-5 mt-4 space-y-8">
                 <div class="py-5 flex items-center justify-between">
                     <div class="flex space-x-9">
@@ -39,6 +39,8 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <h1 class="text-xl text-blue-500 text-center">Aucun etudiant n'est encore enregistrer</h1>
+        @endforelse
     </div>
 </x-app-layout>
