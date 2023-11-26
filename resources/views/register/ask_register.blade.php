@@ -2,15 +2,17 @@
 
     # DEMANDE D'INSCRIPTION SUR TWIN NETWORK
 
-            - NOM        : {{ ucfirst($donnee['name']) }} 
-            
-            - PRENOM     : {{ ucfirst($donnee['lastname']) }} 
+            - MATRICULE  : {{ ucfirst($donnee['matricule']) }}
 
-            - EMAIL      : {{ $donnee['email'] }} 
+            - NOM        : {{ ucfirst($donnee['name']) }}
 
-            - MATRICULE  : {{ ucfirst($donnee['matricule']) }} 
+            - PRENOM     : {{ ucfirst($donnee['lastname']) }}
 
-            - SPECIALITE : {{ ucfirst($donnee['speciality']) }} 
+            - EMAIL      : {{ $donnee['email'] }}
+
+            - SPECIALITE : {{ ucfirst($donnee['speciality']) }}
+
+            - NUMERO TELEPHONE : {{ $donnee['number']}}
 
 
 

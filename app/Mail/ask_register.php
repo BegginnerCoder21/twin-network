@@ -9,15 +9,16 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
-class ask_register extends Mailable
+class ask_register  extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public array $donnee)
+    public function __construct(public array $donnee,public string $imageName)
     {
     }
 
@@ -50,10 +51,11 @@ class ask_register extends Mailable
      */
     public function attachments(): array
     {
+
         return [
-            Attachment::fromPath($this->donnee['image'])
-                ->as($this->donnee['image'] . '.jpeg')
-                ->withMime('img/jpg')
+            //Attachment::fromPath('storage/' . $this->imageName)
+                    //->as('name.jpg')
+                    //->withMime('image/jpeg')
         ];
     }
 }

@@ -4,11 +4,6 @@
 
         <h1 class="text-3xl text-blue-500 text-center mb-12">Demande d'inscription</h1>
 
-        @foreach ($errors->all() as $error)
-                <div class="text-red-500 mt-2xx">
-                    {{$error}}
-                </div>
-            @endforeach
         <!-- Name -->
         <div>
             <x-input-label for="name" class="text-blue-600" :value="__('Nom')" />
@@ -35,6 +30,13 @@
             <x-input-label for="matricule" class="text-blue-600" :value="__('Matricule')" />
             <x-text-input id="matricule" class="block mt-1 w-full" type="text" name="matricule" required />
             <x-input-error :messages="$errors->get('matricule')" class="mt-2" />
+        </div>
+
+        <!-- number-->
+        <div class="mt-4">
+            <x-input-label for="number" class="text-blue-600" :value="__('Numero telephone')" />
+            <x-text-input id="number" class="block mt-1 w-full" type="text" name="number" required />
+            <x-input-error :messages="$errors->get('number')" class="mt-2" />
         </div>
 
         <!-- spcéciality -->
